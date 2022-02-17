@@ -1,0 +1,26 @@
+<div class="" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-xl-6 col-md-6 col-sm-6 text-center">
+            <img src="{{product.Image}}" alt="" style="width: 100%">
+        </div>
+        <div class="col-xl-6 col-md-6 col-sm-6 pl-4">
+            <h3 style="letter-spacing: 1px;">{{product.title}}</h3>
+            <div>
+                <i class="fa fa-star" style="color: yellow;"></i>
+                <i class="fa fa-star" style="color: yellow;"></i>
+                <i class="fa fa-star" style="color: yellow;"></i>
+                <i class="fa fa-star" style="color: yellow;"></i>
+                <i class="fa fa-star" style="color: yellow;"></i>
+            </div>
+            <p>Price: <span style="color: crimson; font-weight: 600;">${{product.price}}</span></p>
+            <hr style="background-color: silver;">
+            <p style="font-weight: 600;">{{product.description}}</p>
+            <p style="font-weight: 600;">{{product.content}}</p>
+            <hr style="background-color: silver;">
+            <p><strong>Category</strong>: {{product.Categories.Category_Name}}</p>
+            <a href="/add-to-cart/{{product._id}}" class="btn btn-danger" style="width: 100%;">Add to card</a>
+
+        </div>
+    </div>
+    
+</div>

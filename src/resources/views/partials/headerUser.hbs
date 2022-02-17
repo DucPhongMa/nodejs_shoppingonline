@@ -1,0 +1,74 @@
+<style>
+  .nav-cart {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .nav-cart .icon-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 50px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img
+        src="https://static.wixstatic.com/media/894dd5_1c6d130c1d0e4852ab01a9010c00a314~mv2.jpg/v1/crop/x_238,y_0,w_964,h_964/fill/w_560,h_560,al_c,q_80,usm_0.66_1.00_0.01/adidas-logo-black-background-wallpaper_j.webp"
+        style="width: 48px; height:48px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active ml-4">
+          <a class="nav-link text-capitalize" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ml-4">
+          <a class="nav-link text-capitalize" href="/productUser">product</a>
+        </li>
+
+        <li class="nav-item ml-4">
+          <a class="nav-link text-capitalize" href="#">About</a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        {{#if login}}
+        <span class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color:white">
+            {{username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/user/profile">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/user/logout">Log Out</a>
+          </div>
+        </span>
+        {{else}}
+        <span class="nav-item">
+          <a href="/user/signin" style="color: white; text-decoration: none;" class="text-capitalize">sign in</a>
+        </span>
+        {{/if}}
+        <div className="nav-cart" 
+             style="  cursor: pointer;position: relative;">
+          <a href="/shopping-cart">
+            <img src="https://ak.picdn.net/shutterstock/videos/1006608868/thumb/7.jpg" alt=""
+              style="width: 50px;margin:6px 5px" />
+          </a>
+
+          <span class="badge bg-danger text-light icon-badge" 
+                style=" position: absolute;
+                        top: 3px;
+                        right: 7px;">{{session.cart.totalQty}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>

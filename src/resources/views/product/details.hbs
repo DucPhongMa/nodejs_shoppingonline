@@ -1,0 +1,19 @@
+
+<div class="" style="margin-top: 100px; border:1px solid silver">
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-sm-6 text-center">
+            <img src="{{product.Image}}" alt="" style="width: 100%  ">
+        </div>
+        <div class="col-xl-8 col-md-6 col-sm-6 pl-4">
+            <h3 style="letter-spacing: 1px;">{{product.title}}</h3>
+            <p>Category: {{product.Categories.Category_Name}}</p>
+            <p>{{product.description}}</p>
+            <p>{{product.content}}</p>
+            <p>Quantity: {{product.quantity}}</p>
+            <p>Price: <span style="color: crimson; font-weight: 600;">${{product.price}}</span></p>
+        </div>
+    </div>
+</div>
+<div>
+    <a class="btn btn-primary text-light     mt-3" href="/product/index">Back to home</a>
+</div>

@@ -1,0 +1,82 @@
+<div class="pagination pagination-centered">
+    <ul class="pagination ">
+        {{#paginate pagination type="first"}}
+        <li {{#if disabled}} class="page-item disabled" {{/if}}>
+            <a href="?page={{n}}" class="page-link">First</a>
+
+        </li>
+        {{/paginate}}
+
+        {{#paginate pagination type="previous"}}
+        <li {{#if disabled}} class="page-item disabled" {{/if}}>
+            <a href="?page={{n}}" class="page-link">prev</a>
+        </li>
+        {{/paginate}}
+
+        {{#paginate pagination type="middle" limit=pagination.pageCount}}
+        <li {{#if active}} class="page-item active" {{/if}}>
+            <a href="?page={{n}}" class="page-link">{{n}}</a>
+        </li>
+        {{/paginate}}
+
+        {{#paginate pagination type="next"}}
+        <li {{#if disabled}} class="page-item disabled" {{/if}}>
+            <a href="?page={{n}}" class="page-link">Next</a>
+        </li>
+        {{/paginate}}
+
+        {{#paginate pagination type="last"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}>
+            <a href="?page={{n}}" class="page-link">Last</a>
+        </li>
+        {{/paginate}}
+    </ul>
+</div>
+
+
+<script>
+    
+
+     /*function getUrl() {
+        var paramsString = location.search;
+        var urlParams = new URLSearchParams(paramsString);
+
+      
+
+        var getPages = document.querySelectorAll('.pagination li a');
+        for(var i = 0 ; i < getPages.length; i++){
+            var page = getPages[i].getAttribute('href').split('=')[1];
+            urlParams.set('page', page)
+            let href = urlParams.toString;
+            getPages[i].href = href;
+        }
+        urlParams.set('page', savePage);
+    }*/
+
+    
+    //?name=...&page=....
+    var paramsString = location.search;
+    var urlParams = new URLSearchParams(paramsString);
+
+    let savePage = urlParams.get('page')
+
+    $('.pagination li a').each((index, item) => {
+        let page = $(item).attr('href').split('=')[1];
+        console.log(page)
+        urlParams.set('page', page)
+        console.log(urlParams.toString())
+        let href = '?' + urlParams.toString();
+        $(item).attr('href', href);
+    })
+
+    urlParams.set('page', savePage);
+    
+
+
+    
+
+
+
+
+
+</script>

@@ -1,0 +1,180 @@
+<style>
+    .card-product-user {
+
+        border: 1px solid #eee;
+        box-shadow: 0px 0px 8px #ddd;
+        transition: linear .3s;
+        min-height: 500px;
+        max-height: 700px;
+        margin-top: 8px;
+    }
+
+    .card-product-user:hover {
+        box-shadow: none;
+        margin-top: 0px;
+    }
+
+    .card-title:hover {
+        color: crimson;
+    }
+
+    .row.content {
+        box-shadow: 0 0 5px #ccc;
+        
+
+    }
+
+    .category-header{
+        background-color: red; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding-top: 3px;
+    }
+
+    .category-header::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-width: 20px;
+        border-style: solid;
+        border-color: transparent transparent transparent white;
+       
+    }
+    
+    .category-header::before{
+       content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-width: 20px;
+        border-style: solid;
+        border-color: transparent white transparent transparent ;
+       
+    }
+
+    .category-header_label {
+        font-size: 15px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .category-list {
+        list-style: none;
+        padding: 0 0 8px 0;
+        line-height: 38px;
+    }
+
+    .category-list_item {
+        border-bottom: 1px solid silver;
+    }
+
+    .category-list_item-link {
+        position: relative;
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
+        display: block;
+        transition: left linear 0.25s;
+        left: 0;
+    }
+
+    .category-list_item-link:hover {
+        color: crimson;
+        left: 5px;
+        text-decoration: none;
+    }
+
+    @media screen and (max-width: 990px) {
+        .hidden-category {
+            display: none;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4" style="width: 300px; margin: auto; margin-top:28px">
+        <div id="success" class="alert alert-success {{#if noMessages}}hidden{{/if}}">
+            {{successMsg}}
+        </div>
+    </div>
+</div>
+<div class="search-form mt-4">
+    <form method="GET" action="">
+        <div class="">
+            <input type="text" name="_search" id="search-input" placeholder="Enter keywords..."
+                style="width: 250px; height: 36px; border:1px solid #ccc; padding-left: 5px;">
+
+            <button type="submit" class="btn btn-primary" style="margin-top: -5px;">Search</button>
+        </div>
+
+    </form>
+</div>
+
+
+<div class="row content mt-3">
+    <div class="col-xl-2 col-lg-2 hidden-category" >
+        <div class="category-header">
+            <h3 class="category-header_label" style="line-height: 30px;">Category</h3>
+        </div>
+
+
+        <ul class="category-list">
+
+            <li class="category-list_item">
+                <a class="category-list_item-link" href="/productUser">All</a>
+            </li>
+            {{#each categories}}
+            <li class="category-list_item">
+                <a class="category-list_item-link" href="/productUser/category/{{this._id}}">{{this.Category_Name}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+
+        {{> sortUser}}
+
+        <div class="row mt-3">
+            {{#each products}}
+            <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="card-product-user">
+                    <a href="/productUser/details/{{this._id}}">
+                        <img class="card-img-top" src="{{this.Image}}" alt="{{this.title}}">
+                    </a>
+
+                    <div class="card-body">
+                        <a href="/productUser/details/{{this._id}}" style="color: black; text-decoration: none;">
+                            <h5 class="card-title">{{this.title}}</h5>
+                        </a>
+                        <!---<p class="card-text">{{this.description}}</p>-->
+                        <p class="card-text">{{this.Categories.Category_Name}}</p>
+                        <strong class="card-text">$<span style="color: crimson;">{{this.price}}</span></strong>
+                        <a href="/add-to-cart/{{this._id}}" class="btn btn-dark" style="width: 100%; margin-top: 10px;">Add to card</a>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div style="width: 200px; margin:150px auto">
+                <p style="font-weight: 600;">Can not find any products</p>
+            </div>
+            {{/each}}
+
+        </div>
+
+        <div class="row">
+            <div class="pagination_css" style="width: 300px;margin:30px auto">
+                {{> pagination}}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

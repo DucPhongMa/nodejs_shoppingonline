@@ -1,0 +1,56 @@
+<div class="text-center pt-2">
+    <h2>Add Products</h2>
+</div>
+<div class="mt-4">
+    <form method="POST" action="/product/{{product._id}}?_method=PUT" enctype="multipart/form-data">
+        <div class="col-xl-6" style="line-height: 5px;">
+            <div class="form-group">
+                <label for="title">Name of Product</label>
+                <input type="text" class="form-control" value="{{product.title}}" id="title" name="title">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" value="{{product.description}}" id="description" name="description">
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <input type="text" class="form-control" value="{{product.content}}" id="content" name="content">
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" value="{{product.price}}" id="price" name="price" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" value="{{product.quantity}}" id="quantity" name="quantity" min="1">
+            </div>
+
+        </div>
+        <div class="col-xl-6">
+             <div class="form-group">
+                <label for="Categories">Categories</label>
+                <select name="Categories">
+                        <option value="{{product.Categories._id}}" selected="selected" label="{{product.Categories.Category_Name}}"></option>
+                    {{#each categories}}
+                        <option value="{{this._id}}" label="{{this.Category_Name}}"></option>
+                    {{/each}}
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label for="Image">Image</label>
+                <img src="{{product.Image}}" alt="" width="150px" height="150px" margin="10px" id="previewImg"
+                style="margin-bottom: 10px;">
+                <input type="file" class="form-control-file" id="Image" name="Image"
+                onchange="ChangeImage(this, document.getElementById('previewImg'))">
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary ml-3">Save</button>
+    </form>
+</div>

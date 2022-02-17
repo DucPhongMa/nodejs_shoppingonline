@@ -1,0 +1,117 @@
+<style>
+    .filter_sort {
+        display: flex;
+        align-items: center;
+        padding: 12px 22px;
+        border-radius: 2px;
+        background-color: #333;
+
+    }
+
+    .filter_sort-label {
+        font-size: 16px;
+        color: white;
+        margin-right: 40px;
+    }
+
+    .filter_sort-new {
+        padding: 0 12px;
+        height: 34px;
+        border-radius: 2px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .filter_sort-select {
+        padding: 0 12px;
+        height: 34px;
+        border-radius: 2px;
+        background-color: white;
+        min-width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .filter_sort-new:hover,
+    .filter_sort-select:hover{
+        background-color: #EE4D2D;
+        color: white;
+        text-decoration: none;
+    }
+
+    .filter_sort-select-list {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 36px;
+        border-radius: 2px;
+        background-color: white;
+        padding: 8px 16px;
+        list-style: none;
+        display: none;
+        z-index: 9999;
+        height: 70px;
+        box-shadow: 0 1px 2px #e0e0e0;
+    }
+
+    .filter_sort-select:hover .filter_sort-select-list {
+        display: block;
+    }
+
+    .filter_sort-select__item-link {
+        font-size: 14px;
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 4px 0;
+    }
+
+    .filter_sort-select__item-link:hover {
+        color: orangered;
+        text-decoration: none;
+    }
+</style>
+
+<div class="filter_sort">
+    <span class="filter_sort-label">Sort by</span>
+
+    <a href="?_sort=new_product" class="filter_sort-new">New</a>
+
+    <div class="filter_sort-select">
+        <span class="filter_sort-select--label">Price</span><i class="select-input__icon fa fa-angle-down"
+            aria-hidden="true"></i>
+        <ul class="filter_sort-select-list">
+            <li class="filter_sort-select__item">
+                <a class="filter_sort-select__item-link" href="?_sort=asc">Sort By ASC</a>
+            </li>
+            <li class="filter_sort-select__item">
+                <a class="filter_sort-select__item-link" href="?_sort=desc">Sort By DESC</a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>    
+    var paramsString = location.search;
+    var urlParams = new URLSearchParams(paramsString);
+    
+   
+   $('.filter_sort-select__item-link, .filter_sort-new').each((index, item) => {
+        let method = $(item).attr('href').split('=')[1];
+        urlParams.set('_sort', method)
+        let href = '?' + urlParams.toString();
+        $(item).attr('href', href);
+    })
+
+   
+</script>

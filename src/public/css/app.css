@@ -1,0 +1,34 @@
+body{
+    background-color:#f1f1f1;
+}
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+  .row.content {height: 120vh}
+    
+  /* Set gray background color and 100% height */
+  .sidenav {
+    background-color: #222e3c;
+    height: 100%;
+  }
+      
+  /* On small screens, set height to 'auto' for the grid */
+  @media screen and (max-width: 767px) {
+    .row.content {height: auto;} 
+  }
+
+  .nav-css{
+    color: rgba(255,255,255,.5);
+    margin-left: -10px;
+  }
+
+
+  .nav-css:hover{
+    color: white;
+    margin-left: -5px;
+    transition: .4s;
+  }
+
+  .disabled-css{
+    color: white;
+    pointer-events: none;
+    cursor: default;
+  }
