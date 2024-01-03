@@ -69,7 +69,9 @@ class ProductController{
     store(req, res, next){
         
         const formData = req.body;
-        formData.Image = `\\` + req.file.path.split('\\').splice(5).join('\\');
+        console.log(req.file.path)
+        formData.Image = `\\` + req.file.path.split('\\').splice(8).join('\\');
+        
         const product = new Product(formData);
         product.save()
                 .then(() => res.redirect('/product/index'))
