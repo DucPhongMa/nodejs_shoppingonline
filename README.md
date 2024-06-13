@@ -1,5 +1,7 @@
 <h1>Description</h1>
-The project allows users be able to manage business in the store by handling CRUD functionality such as retrieve, create, modify and remove products.
+<b>E-commercial Website</b>: The project allows users be able to manage business in the store by handling CRUD functionality such as retrieve, create, modify and remove products.<br /><br />
+
+<b>Technology used</b>: <i>HTML5, CSS3, Bootstrap 4, JavaScript, Node.js, Express.js, MongoDB, Handlebars template engine</i>
 <h1>Getting Started</h1>
 
 1. Clone the repository
